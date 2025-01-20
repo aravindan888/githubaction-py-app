@@ -1,0 +1,30 @@
+name: Python CI #workflow name
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    test:
+        runs-on: ubuntu-latest     #containers like ubuntu, windows, macos
+        
+        steps:
+            - name: check out the code  #step 1: to check the code
+              uses: actions/checkout@v2  #action/checkout@v2 is a prebuilt plugin of version 2 by githubactions to take the code from repo and check when it is triggered
+
+            - name: to setup a python environment    
+              uses: actions/setup-python@v2         #step2: actions/setup-python@v2 is a prebuilt plugin of verion 2 to build/setup a python environment of version 3.8
+              with:
+               python-version: '3.8'
+            
+            - name: Install dependencies        # installs all the dependencies/requirements to run the test (requirements.txt)
+              run: |
+                 python -m pip install --upgrade pip 
+                 pip install -r requirements.txt  
+
+            - name: Run tests #tests folder
+              run: pytest
