@@ -19,7 +19,7 @@ jobs:
             - name: to setup a python environment    
               uses: actions/setup-python@v2         #step2: actions/setup-python@v2 is a prebuilt plugin of verion 2 to build/setup a python environment of version 3.8
               with:
-               python-version:'3.8'
+               python-version: '3.8'
             
             - name: Install dependencies        # installs all the dependencies/requirements to run the test (requirements.txt)
               run: |
